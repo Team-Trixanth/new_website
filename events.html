@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Organised</title>
+    <style>
+        :root {
+            --color-text: rgb(84, 84, 90);
+            --color-bg:linear-gradient(180deg, #666666, #57392f, #421605); /* Background color for better contrast */
+            --size: clamp(10rem, 1rem + 40vmin, 30rem);
+            --gap: calc(var(--size) / 14);
+            --duration: 15s;
+            --scroll-start: 0;
+            --scroll-end: calc(-100% - var(--gap));
+        }
+
+        body {
+            
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: 100% 100%;
+    height: 170vh;
+    overflow: hidden;
+    font-family: system-ui, sans-serif;
+    background-repeat: no-repeat;
+    background-position: center;
+    background: var(--color-bg);
+    transform: scale(1); /* Scale down the entire page */
+    /* transform-origin: top left; Set the scaling origin to top-left */
+}
+            
+        
+        h1 {
+            position: absolute;
+            top: 5rem;
+            left: 30%;
+            /* transform: translateX(-40%); */
+            color: wheat;
+            font-size: 5rem;
+            margin: 0;
+            z-index: 10; /* Ensure it stays above other elements */
+        }
+        h2 {
+            position: absolute;
+            top: 15rem;
+            left: 10%;
+            right: 10%;
+            /* transform: translateX(-40%); */
+            color: wheat;
+            font-size: 1.6rem;
+            margin: 0;
+            z-index: 10; /* Ensure it stays above other elements */
+        }
+
+        .marquee {
+            display: flex;
+            gap: var(--gap);
+            position: absolute;
+            top: 4rem;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .marquee img {
+            padding-top: 25vh;
+            height: 100px; /* Set a consistent height for all images */
+            width: auto; /* Maintain aspect ratio */
+            border-radius: 0.5rem;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .marquee img:hover {
+            transform: scale(1.1); /* Add hover effect */
+            background-color: rgba(12, 12, 12, 0.241)
+        }
+
+        .marquee__group {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: var(--gap);
+            animation: scroll-x var(--duration) linear infinite;
+        }
+
+        @keyframes scroll-x {
+            from {
+                transform: translateX(var(--scroll-start));
+            }
+            to {
+                transform: translateX(var(--scroll-end));
+            }
+        }
+
+        .marquee svg,
+        .marquee__group img {
+            width: var(--size);
+            height: 600px;
+            background: none;
+            border-radius: 0.5rem;
+        }
+
+        .toggle {
+            --size: 7rem;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            width: var(--size);
+            height: var(--size);
+            font: inherit;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            border: none;
+            border-radius: 50%;
+            background-color: rgb(62, 27, 8);
+            z-index: 1;
+        }
+        @media screen and (max-width: 767px) {
+
+            body{
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: auto 100%;
+                height: 100vh;
+                transform: scale(1); /* Further scale down for smaller screens */
+                transform-origin: top left;
+            }
+                        
+            h1 {
+            position: absolute;
+            top: 3rem;
+            left: 30%;
+            /* transform: translateX(-40%); */
+            color: wheat;
+            font-size: 3rem;
+            margin: 0;
+            z-index: 10; /* Ensure it stays above other elements */
+        }
+        h2 {
+            position: absolute;
+            top: 8rem;
+            left: 10%;
+            right: 10%;
+            /* transform: translateX(-40%); */
+            color: wheat;
+            font-size: 1rem;
+            margin: 0;
+            z-index: 10; /* Ensure it stays above other elements */
+        }
+        .marquee img {
+            padding-top: 20vh;
+            padding-bottom: 15vh;
+            height: 80px; /* Set a consistent height for all images */
+            width: auto; /* Maintain aspect ratio */
+            border-radius: 0.5rem;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+                    }
+                    .marquee svg,
+        .marquee__group img {
+            width: var(--size);
+            height: 400px;
+            background: none;
+            border-radius: 0.5rem;
+        }
+        .marquee {
+            display: flex;
+            gap: var(--gap);
+            position: absolute;
+            top: 8.5rem;
+            bottom: 0rem;
+            left: 0rem;
+            width: 100vw;
+            height: 80vh;
+            overflow: hidden;
+                }
+    </style>
+</head>
+
+<body>
+    <button class="toggle" id="direction-toggle">
+        <svg aria-hidden="true" viewBox="0 0 512 512" width="100" title="arrows-alt-h">
+            <path d="M377.941 169.941V216H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.568 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296h243.882v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.568 0-33.941l-86.059-86.059c-15.119-15.12-40.971-4.412-40.971 16.97z" />
+        </svg>
+    </button>
+    <h1 style="color: wheat;">Events Organised</h1>
+    <h2 style="color: wheat;">Organized impactful events like Robocraft, a two-day hands-on robotics workshop, Rapid Tracer, an exhilarating line-following robot competition, and an Engineers’ Day Ideathon to solve real-world challenges. These events foster innovation, teamwork, and practical learning, empowering students to explore robotics and engineering solutions with creativity and precision.</h2>
+
+    <div class="marquee">
+        <div class="marquee__group">
+            <a href="https://ras-dsu.github.io/ras_dsu/EventsPages/PreviousEvents/Rapid-Tracer.html" target="_blank"> <img src="src/images/rapid tracer.jpeg"  alt="Rapid Tracer"></a>
+            <a href="https://ras-dsu.github.io/ras_dsu/EventsPages/PreviousEvents/Engineer-The-Future.html" target="_blank"> <img src="src/images/enginer the future.jpg"  alt="Engineer the Future"></a>
+            <a href="https://ras-dsu.github.io/ras_dsu/EventsPages/PreviousEvents/RoboCraft.html" target="_blank"> <img src="src/images/RoboCraftPoster.jpg"  alt="RoboCraft"> </a>
+            
+            
+        </div>
+        <div aria-hidden="true" class="marquee__group">
+            <a href="https://ras-dsu.github.io/ras_dsu/EventsPages/PreviousEvents/Rapid-Tracer.html" target="_blank"> <img src="src/images/rapid tracer.jpeg" alt="Rapid Tracer"></a>
+            <a href="https://ras-dsu.github.io/ras_dsu/EventsPages/PreviousEvents/Engineer-The-Future.html" target="_blank"> <img src="src/images/enginer the future.jpg" alt="Engineer the Future"></a>
+            <a href="https://ras-dsu.github.io/ras_dsu/EventsPages/PreviousEvents/RoboCraft.html" target="_blank"> <img src="src/images/RoboCraftPoster.jpg" alt="RoboCraft"> </a>
+        </div>
+    </div>
+
+    <script>
+        const control = document.getElementById("direction-toggle");
+        const marquees = document.querySelectorAll(".marquee__group");
+
+        control.addEventListener("click", () => {
+            marquees.forEach(marquee => {
+                marquee.style.animationDirection =
+                    marquee.style.animationDirection === "reverse" ? "normal" : "reverse";
+            });
+        });
+    </script>
+</body>
+
+</html>
